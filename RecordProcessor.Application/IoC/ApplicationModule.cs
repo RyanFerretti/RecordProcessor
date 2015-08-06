@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using RecordProcessor.Application.Validators;
 
 namespace RecordProcessor.Application.IoC
 {
@@ -7,6 +8,7 @@ namespace RecordProcessor.Application.IoC
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<RecordProcessorFromFile>().As<IRecordProcessor>();
+            builder.RegisterType<ArgumentsValidator>().As<IValidator<string[]>>();
         }
     }
 }

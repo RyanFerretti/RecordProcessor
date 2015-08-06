@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.IO;
+using Autofac;
 using NUnit.Framework;
 using RecordProcessor.Application;
 using RecordProcessor.Console.IoC;
@@ -20,7 +21,7 @@ namespace RecordProcessor.AcceptanceTests.Application
         }
 
         [Test]
-        public void ShouldReturnResultWhenRun()
+        public void ShouldReturnFailure()
         {
             var result = _sut.Run(new string[] { });
             Assert.That(result.Success,Is.False);
@@ -29,7 +30,8 @@ namespace RecordProcessor.AcceptanceTests.Application
         [Test]
         public void ShouldPrintRecordsWhenRun()
         {
-            _sut.Run(new string[] {});
+            var path = Path.Combine(SolutionPath, "records_comma.txt");
+            _sut.Run(new[] { path });
             _mockPrinter.AssertWasCalled(p => p.Print("not implemented"));
         }
 
@@ -45,6 +47,10 @@ namespace RecordProcessor.AcceptanceTests.Application
         {
             _mockPrinter = MockRepository.GenerateMock<IPrinter>();
             builder.Register(c => _mockPrinter).As<IPrinter>();
+        }
+        private static string SolutionPath
+        {
+            get { return Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName; }
         }
     }
 }

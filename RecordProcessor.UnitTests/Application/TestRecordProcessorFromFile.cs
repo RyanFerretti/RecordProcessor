@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RecordProcessor.Application;
+using RecordProcessor.Application.Validators;
 using Rhino.Mocks;
 
 namespace RecordProcessor.UnitTests.Application
@@ -9,26 +10,29 @@ namespace RecordProcessor.UnitTests.Application
     {
         private IRecordProcessor _sut;
         private IPrinter _printer;
+        private IValidator<string[]> _validator;
 
         [SetUp]
         public void Setup()
         {
             _printer = MockRepository.GenerateMock<IPrinter>();
-            _sut = new RecordProcessorFromFile(_printer);
+            _validator = MockRepository.GenerateMock<IValidator<string[]>>();
+            _sut = new RecordProcessorFromFile(_validator,_printer);
         }
 
         [Test]
-        public void ShouldReturnFailure()
+        public void ShouldReturnFailureIfValidationFails()
         {
-            var result = _sut.Run(new string[]{});
+            var args = new string[]{};
+            var validationResult = new ValidationResult{IsValid = false, ErrorMessage = "error"};
+            
+            _validator.Stub(v => v.IsValid(args)).Return(validationResult);
+
+            var result = _sut.Run(args);
+
             Assert.That(result.Success,Is.False);
+            _printer.AssertWasCalled(p => p.Print(validationResult.ErrorMessage));   
         }
 
-        [Test]
-        public void ShouldPrintMessage()
-        {
-            _sut.Run(new string[] {});
-            _printer.AssertWasCalled(p => p.Print("not implemented"));    
-        }
     }
 }
