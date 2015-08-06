@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using RecordProcessor.Application.Domain;
+using RecordProcessor.Application.Parsers;
 using RecordProcessor.Application.Validators;
 
 namespace RecordProcessor.Application.IoC
@@ -9,6 +11,8 @@ namespace RecordProcessor.Application.IoC
         {
             builder.RegisterType<RecordProcessorFromFile>().As<IRecordProcessor>();
             builder.RegisterType<ArgumentsValidator>().As<IValidator<string[]>>();
+            builder.RegisterType<RecordParser>().As<IParser>();
+            builder.RegisterType<RecordsBuilder>().As<IBuilder<Record>>();
         }
     }
 }

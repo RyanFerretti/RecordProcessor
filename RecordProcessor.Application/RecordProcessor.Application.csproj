@@ -44,11 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IContentFinder.cs" />
+    <Compile Include="RecordsBuilder.cs" />
+    <Compile Include="IBuilder.cs" />
+    <Compile Include="Parsers\RecordParser.cs" />
+    <Compile Include="Domain\Record.cs" />
+    <Compile Include="IContentHelper.cs" />
     <Compile Include="FileProcessedResult.cs" />
     <Compile Include="IoC\ApplicationModule.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="IRecordProcessor.cs" />
+    <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordProcessorFromFile.cs" />
     <Compile Include="Validators\ArgumentsValidator.cs" />

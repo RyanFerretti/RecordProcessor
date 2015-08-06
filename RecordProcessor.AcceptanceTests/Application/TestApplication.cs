@@ -30,7 +30,7 @@ namespace RecordProcessor.AcceptanceTests.Application
         [Test]
         public void ShouldPrintRecordsWhenRun()
         {
-            var path = Path.Combine(SolutionPath, "records_comma.txt");
+            var path = PathHelperForTests.CommaDelimitedFilePath;
             _sut.Run(new[] { path });
             _mockPrinter.AssertWasCalled(p => p.Print("not implemented"));
         }
@@ -47,10 +47,6 @@ namespace RecordProcessor.AcceptanceTests.Application
         {
             _mockPrinter = MockRepository.GenerateMock<IPrinter>();
             builder.Register(c => _mockPrinter).As<IPrinter>();
-        }
-        private static string SolutionPath
-        {
-            get { return Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName; }
         }
     }
 }

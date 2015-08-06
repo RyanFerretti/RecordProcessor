@@ -11,15 +11,15 @@ namespace RecordProcessor.UnitTests.Application.Validators
     public class TestArgumentsValidator
     {
         private ArgumentsValidator _sut;
-        private IContentFinder _fileFinder;
+        private IContentHelper _fileHelper;
 
         private const string ArgsRequiredErrorMessage = "args are required";
 
         [SetUp]
         public void Setup()
         {
-            _fileFinder = MockRepository.GenerateMock<IContentFinder>();
-            _sut = new ArgumentsValidator(_fileFinder);    
+            _fileHelper = MockRepository.GenerateMock<IContentHelper>();
+            _sut = new ArgumentsValidator(_fileHelper);    
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace RecordProcessor.UnitTests.Application.Validators
             var temp1Txt = "temp1.txt";
             var temp2Txt = "temp2.txt";
 
-            _fileFinder.Stub(f => f.Exists(Arg<string>.Is.Anything)).Return(true);
+            _fileHelper.Stub(f => f.Exists(Arg<string>.Is.Anything)).Return(true);
 
             var result = _sut.IsValid(new[] {temp1Txt, temp2Txt});
 
@@ -58,8 +58,8 @@ namespace RecordProcessor.UnitTests.Application.Validators
             var temp1Txt = "temp1.txt";
             var temp2Txt = "temp2.txt";
 
-            _fileFinder.Stub(f => f.Exists(temp1Txt)).Return(true);
-            _fileFinder.Stub(f => f.Exists(temp2Txt)).Return(false);
+            _fileHelper.Stub(f => f.Exists(temp1Txt)).Return(true);
+            _fileHelper.Stub(f => f.Exists(temp2Txt)).Return(false);
 
             var result = _sut.IsValid(new[] { temp1Txt, temp2Txt });
 

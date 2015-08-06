@@ -7,9 +7,18 @@ namespace RecordProcessor.AcceptanceTests.Console
     public class TestContainer
     {
         [Test]
-        public static void ShouldInitializeContainer()
+        public static void ShouldInitializeContainerAndFail()
         {
             var result = Program.Main(new string[]{});
+            Assert.That(result, Is.EqualTo(Program.Error));
+        }
+
+        [Test]
+        public static void ShouldInitializeContainerAndSmoke()
+        {
+
+            var path = PathHelperForTests.CommaDelimitedFilePath;
+            var result = Program.Main(new[] { path });
             Assert.That(result, Is.EqualTo(Program.Error));
         }
     }

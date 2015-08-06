@@ -5,11 +5,11 @@ namespace RecordProcessor.Application.Validators
 {
     public class ArgumentsValidator : IValidator<string[]>
     {
-        private readonly IContentFinder _finder;
+        private readonly IContentHelper _helper;
 
-        public ArgumentsValidator(IContentFinder finder)
+        public ArgumentsValidator(IContentHelper helper)
         {
-            _finder = finder;
+            _helper = helper;
         }
 
         public ValidationResult IsValid(string[] args)
@@ -26,7 +26,7 @@ namespace RecordProcessor.Application.Validators
             var errors = new List<string>();
             foreach (var path in args)
             {
-                if (!_finder.Exists(path))
+                if (!_helper.Exists(path))
                 {
                     errors.Add(string.Format("{0} is not a valid file path",path));
                 }
