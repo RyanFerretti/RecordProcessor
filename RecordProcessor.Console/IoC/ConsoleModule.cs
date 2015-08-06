@@ -11,6 +11,7 @@ namespace RecordProcessor.Console.IoC
             builder.RegisterModule(new ApplicationModule());
 
             builder.RegisterType<ConsolePrinter>().As<IPrinter>();
+            builder.RegisterType<FileFinder>().As<IContentFinder>();
         }
     }
 }

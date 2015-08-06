@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Application\TestFileProcessedResult.cs" />
     <Compile Include="Application\TestRecordProcessorFromFile.cs" />
+    <Compile Include="Application\Validators\TestArgumentsValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

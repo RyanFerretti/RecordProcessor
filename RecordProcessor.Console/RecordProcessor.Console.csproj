@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileFinder.cs" />
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="IoC\ConsoleModule.cs" />
     <Compile Include="Program.cs" />
