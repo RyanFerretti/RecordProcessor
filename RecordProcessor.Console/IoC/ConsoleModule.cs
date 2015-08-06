@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using RecordProcessor.Application;
 using RecordProcessor.Application.IoC;
 
 namespace RecordProcessor.Console.IoC
@@ -8,6 +9,8 @@ namespace RecordProcessor.Console.IoC
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterModule(new ApplicationModule());
+
+            builder.RegisterType<ConsolePrinter>().As<IPrinter>();
         }
     }
 }

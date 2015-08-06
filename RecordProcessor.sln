@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordProcessor.UnitTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordProcessor.AcceptanceTests", "RecordProcessor.AcceptanceTests\RecordProcessor.AcceptanceTests.csproj", "{BDE3724A-771D-4100-A8E7-1BF93728B54B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Record Files", "Record Files", "{233C1004-69A2-4163-98F3-80C7803443CB}"
+	ProjectSection(SolutionItems) = preProject
+		records_comma.txt = records_comma.txt
+		records_pipe.txt = records_pipe.txt
+		records_space.txt = records_space.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

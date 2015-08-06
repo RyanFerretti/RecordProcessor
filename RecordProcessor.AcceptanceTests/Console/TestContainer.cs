@@ -6,17 +6,11 @@ namespace RecordProcessor.AcceptanceTests.Console
     [TestFixture]
     public class TestContainer
     {
-        [SetUp]
-        public void Setup()
-        {
-
-        }
-
         [Test]
-        public static void ShouldExerciseContainer()
+        public static void ShouldInitializeContainer()
         {
             var result = Program.Main(new string[]{});
-            Assert.That(result, Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(Program.Error));
         }
     }
 }

@@ -6,15 +6,14 @@ namespace RecordProcessor.Console
 {
     public class Program
     {
+        public const int Success = 0;
+        public const int Error = -1;
+
         public static int Main(string[] args)
         {
             var builder = BuildContainer();
-            using (var scope = builder.BeginLifetimeScope())
-            {
-                var processor = scope.Resolve<IRecordProcessor>();
-                processor.Run(args);
-            }
-            return 0;
+            var result = InitializeAndRunApplication(args, builder);
+            return result.Success ? Success : Error;
         }
 
         private static IContainer BuildContainer()
@@ -23,5 +22,17 @@ namespace RecordProcessor.Console
             builder.RegisterModule(new ConsoleModule());
             return builder.Build();
         }
+
+        private static FileProcessedResult InitializeAndRunApplication(string[] args, IContainer builder)
+        {
+            FileProcessedResult result;
+            using (var scope = builder.BeginLifetimeScope())
+            {
+                var processor = scope.Resolve<IRecordProcessor>();
+                result = processor.Run(args);
+            }
+            return result;
+        }
+
     }
 }

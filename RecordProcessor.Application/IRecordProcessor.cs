@@ -2,6 +2,6 @@
 {
     public interface IRecordProcessor
     {
-        void Run(string[] args);
+        FileProcessedResult Run(string[] args);
     }
 }

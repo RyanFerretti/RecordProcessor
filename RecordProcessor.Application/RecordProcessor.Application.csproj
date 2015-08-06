@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileProcessedResult.cs" />
     <Compile Include="IoC\ApplicationModule.cs" />
+    <Compile Include="IPrinter.cs" />
     <Compile Include="IRecordProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordProcessor.cs" />
+    <Compile Include="RecordProcessorFromFile.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
