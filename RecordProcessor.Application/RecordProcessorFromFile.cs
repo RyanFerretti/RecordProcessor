@@ -26,9 +26,7 @@ namespace RecordProcessor.Application
                 return failedResult;
             }
 
-            var records = _recordBuilder.Build(args);
-
-            // sort records
+            var records = _recordBuilder.Build(new []{args[0],args[1],args[2]},args[4]);
 
             var result = new FileProcessedResult { Success = false, ErrorMessage = "not implemented" };
             _printer.Print(result.DisplayMessage);

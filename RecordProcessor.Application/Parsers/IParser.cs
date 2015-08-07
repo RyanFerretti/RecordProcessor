@@ -1,9 +1,7 @@
-using RecordProcessor.Application.Domain;
-
 namespace RecordProcessor.Application.Parsers
 {
-    public interface IParser
+    public interface IParser<T>
     {
-        Record Parse(string data);
+        T Parse(string data);
     }
 }

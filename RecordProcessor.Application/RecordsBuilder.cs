@@ -2,27 +2,36 @@
 using System.Linq;
 using RecordProcessor.Application.Domain;
 using RecordProcessor.Application.Parsers;
+using RecordProcessor.Application.Sorters;
 
 namespace RecordProcessor.Application
 {
     public class RecordsBuilder : IBuilder<Record>
     {
         private readonly IContentHelper _contentHelper;
-        private readonly IParser _parser;
+        private readonly IParser<Record> _recordParser;
+        private readonly IParser<SortMethod> _sortMethodParser;
+        private readonly ISortStrategyFactory _sortStrategyFactory;
 
-        public RecordsBuilder(IContentHelper contentHelper, IParser parser)
+        public RecordsBuilder(IContentHelper contentHelper, IParser<Record> recordParser, IParser<SortMethod> sortMethodParser, ISortStrategyFactory sortStrategyFactory)
         {
             _contentHelper = contentHelper;
-            _parser = parser;
+            _recordParser = recordParser;
+            _sortMethodParser = sortMethodParser;
+            _sortStrategyFactory = sortStrategyFactory;
         }
 
-        public IEnumerable<Record> Build(string[] paths)
+        public IEnumerable<Record> Build(string[] pathArgs,string sortingArg)
         {
-            var result = new List<Record>();
-            foreach (var content in paths.Select(path => _contentHelper.ReadLines(path)))
+            var records = new List<Record>();
+            var sortingMethod = _sortMethodParser.Parse(sortingArg);
+            
+            foreach (var content in pathArgs.Select(path => _contentHelper.ReadLines(path)))
             {
-                result.AddRange(content.Select(line => _parser.Parse(line)));
+                records.AddRange(content.Select(line => _recordParser.Parse(line)));
             }
+
+            var result = _sortStrategyFactory.Get(sortingMethod).Execute(records);
             return result;
         }
     }

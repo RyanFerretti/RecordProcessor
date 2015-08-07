@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsers\SortMethodParser.cs" />
     <Compile Include="RecordsBuilder.cs" />
     <Compile Include="IBuilder.cs" />
     <Compile Include="Parsers\RecordParser.cs" />

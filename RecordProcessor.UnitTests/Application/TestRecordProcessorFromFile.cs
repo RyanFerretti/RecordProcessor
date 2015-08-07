@@ -40,14 +40,14 @@ namespace RecordProcessor.UnitTests.Application
         [Test]
         public void ShouldBuildRecords()
         {
-            var args = new string[] { };
+            var args = new string[] {"1","2","3","4","5"};
             var validationResult = new ValidationResult { IsValid = true};
 
             _validator.Stub(v => v.IsValid(args)).Return(validationResult);
 
             var result = _sut.Run(args);
 
-            _builder.AssertWasCalled(b => b.Build(args));
+            _builder.AssertWasCalled(b => b.Build(Arg<string[]>.Matches(s => s[0] == args[0] && s[1] == args[1] && s[2] == args[2]),Arg<string>.Is.Equal(args[4])));
         }
     }
 }
