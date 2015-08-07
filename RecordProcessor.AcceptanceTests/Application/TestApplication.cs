@@ -28,11 +28,11 @@ namespace RecordProcessor.AcceptanceTests.Application
         }
 
         [Test]
-        public void ShouldPrintRecordsWhenRun()
+        public void ShouldPrintFailedValidation()
         {
             var path = PathHelperForTests.CommaDelimitedFilePath;
             _sut.Run(new[] { path });
-            _mockPrinter.AssertWasCalled(p => p.Print("not implemented"));
+            _mockPrinter.AssertWasCalled(p => p.Print(Arg<string>.Matches(s => s.Contains("args are required"))));
         }
 
         private IContainer BuildContainer()
