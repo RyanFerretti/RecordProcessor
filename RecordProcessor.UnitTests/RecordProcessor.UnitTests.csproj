@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Sorters\TestBirthDateSortStrategy.cs" />
+    <Compile Include="Application\Sorters\TestLastNameSortStrategy.cs" />
+    <Compile Include="Application\Sorters\TestFemalesFirstSortStrategy.cs" />
+    <Compile Include="Application\Sorters\TestSortStratedyFactory.cs" />
     <Compile Include="Application\TestRecordsBuilder.cs" />
     <Compile Include="Application\Parsers\TestRecordParser.cs" />
     <Compile Include="Application\TestFileProcessedResult.cs" />
