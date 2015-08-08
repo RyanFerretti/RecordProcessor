@@ -28,8 +28,10 @@ namespace RecordProcessor.Application
 
             var records = _recordBuilder.Build(new []{args[0],args[1],args[2]},args[4]);
 
-            var result = new FileProcessedResult { Success = false, ErrorMessage = "not implemented" };
+            var successMessage = string.Join("\n",records);
+            var result = new FileProcessedResult { Success = true, Records =  records, SuccessMessage = successMessage};
             _printer.Print(result.DisplayMessage);
+
             return result;
         }
     }

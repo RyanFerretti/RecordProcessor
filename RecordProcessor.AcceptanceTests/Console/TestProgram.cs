@@ -4,7 +4,7 @@ using RecordProcessor.Console;
 namespace RecordProcessor.AcceptanceTests.Console
 {
     [TestFixture]
-    public class TestContainer
+    public class TestProgram
     {
         [Test]
         public static void ShouldInitializeContainerAndFail()

@@ -41,7 +41,7 @@ namespace RecordProcessor.UnitTests.Application.Parsers
 
         private string BuildRecordInput(string delimiter, string firstName, string lastName, string gender, string color, DateTime birthDate)
         {
-            return string.Format("{1} {0} {2} {0} {3} {0} {4} {0} {5}", delimiter, firstName, lastName, gender, color, birthDate);
+            return string.Format("{1} {0} {2} {0} {3} {0} {4} {0} {5}", delimiter, lastName, firstName, gender, color, birthDate);
         }
     }
 }

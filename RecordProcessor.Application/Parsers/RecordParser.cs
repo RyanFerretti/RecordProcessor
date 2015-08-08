@@ -20,8 +20,8 @@ namespace RecordProcessor.Application.Parsers
             var values = recordData.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToArray();
             return new Record
             {
-                FirstName = values[0],
-                LastName = values[1],
+                LastName = values[0],
+                FirstName = values[1],
                 Gender = values[2],
                 FavoriteColor = values[3],
                 BirthDate = DateTime.Parse(values[4])

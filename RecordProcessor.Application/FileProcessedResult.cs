@@ -1,4 +1,7 @@
-﻿namespace RecordProcessor.Application
+﻿using System.Collections.Generic;
+using RecordProcessor.Application.Domain;
+
+namespace RecordProcessor.Application
 {
     public class FileProcessedResult
     {
@@ -6,5 +9,6 @@
         public string ErrorMessage { private get; set; }
         public string SuccessMessage { private get; set; }
         public string DisplayMessage { get { return Success ? SuccessMessage : ErrorMessage; } }
+        public IEnumerable<Record> Records { get; set; }
     }
 }

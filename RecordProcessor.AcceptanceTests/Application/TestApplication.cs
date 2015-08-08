@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Autofac;
 using NUnit.Framework;
 using RecordProcessor.Application;
@@ -24,15 +25,21 @@ namespace RecordProcessor.AcceptanceTests.Application
         public void ShouldReturnFailure()
         {
             var result = _sut.Run(new string[] { });
-            Assert.That(result.Success,Is.False);
+            Assert.That(result.Success, Is.False);
+            _mockPrinter.AssertWasCalled(p => p.Print(Arg<string>.Matches(s => s.Contains("args are required"))));
+
         }
 
         [Test]
-        public void ShouldPrintFailedValidation()
+        public void ShouldPrintSortedRecords()
         {
-            var path = PathHelperForTests.CommaDelimitedFilePath;
-            _sut.Run(new[] { path });
-            _mockPrinter.AssertWasCalled(p => p.Print(Arg<string>.Matches(s => s.Contains("args are required"))));
+            var firstExpectedName = "Amy Andrews";
+            var lastExpectedBirth = new DateTime(1970,2,28);
+            var commaFile = PathHelperForTests.CommaDelimitedFilePath;
+            var pipeFile = PathHelperForTests.PipeDelimitedFilePath;
+            var spaceFile = PathHelperForTests.SpaceDelimitedFilePath;
+            _sut.Run(new[] { commaFile, pipeFile, spaceFile, "-s", "1" });
+            _mockPrinter.AssertWasCalled(p => p.Print(Arg<string>.Matches(s => s.StartsWith(firstExpectedName) && s.EndsWith(lastExpectedBirth.ToString()))));
         }
 
         private IContainer BuildContainer()

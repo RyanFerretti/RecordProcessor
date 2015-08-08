@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Application\TestApplication.cs" />
     <Compile Include="PathHelperForTests.cs" />
-    <Compile Include="Console\TestContainer.cs" />
+    <Compile Include="Console\TestProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Domain\TestRecord.cs" />
     <Compile Include="Application\Parsers\TestSortMethodParser.cs" />
     <Compile Include="Application\Sorters\TestBirthDateSortStrategy.cs" />
     <Compile Include="Application\Sorters\TestLastNameSortStrategy.cs" />

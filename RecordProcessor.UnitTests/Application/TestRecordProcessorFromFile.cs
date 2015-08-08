@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using RecordProcessor.Application;
 using RecordProcessor.Application.Domain;
 using RecordProcessor.Application.Validators;
@@ -40,14 +41,41 @@ namespace RecordProcessor.UnitTests.Application
         [Test]
         public void ShouldBuildRecords()
         {
-            var args = new string[] {"1","2","3","4","5"};
+            var args = new[] {"1","2","3","4","5"};
             var validationResult = new ValidationResult { IsValid = true};
+            var record1 = new Record{FirstName = "first1",LastName = "last1"};
+            var record2 = new Record{FirstName = "first2",LastName = "last2"};
+            var expectedRecords = new List<Record>{record1, record2};
 
             _validator.Stub(v => v.IsValid(args)).Return(validationResult);
+            _builder.Stub(b => b.Build(Arg<string[]>.Matches(s => s[0] == args[0] && s[1] == args[1] && s[2] == args[2]), Arg<string>.Is.Equal(args[4]))).Return(expectedRecords);
 
             var result = _sut.Run(args);
 
-            _builder.AssertWasCalled(b => b.Build(Arg<string[]>.Matches(s => s[0] == args[0] && s[1] == args[1] && s[2] == args[2]),Arg<string>.Is.Equal(args[4])));
+            Assert.That(result.Success,Is.True);
+            Assert.That(result.Records,Is.SameAs(expectedRecords));
+            Assert.That(result.DisplayMessage,Is.StringContaining(record1.FirstName));
+            Assert.That(result.DisplayMessage,Is.StringContaining(record1.LastName));
+            Assert.That(result.DisplayMessage,Is.StringContaining(record2.FirstName));
+            Assert.That(result.DisplayMessage,Is.StringContaining(record2.LastName));
+
+        }
+
+
+        [Test]
+        public void ShouldPrintRecords()
+        {
+            var args = new[] { "1", "2", "3", "4", "5" };
+            var validationResult = new ValidationResult { IsValid = true };
+            var record1 = new Record { FirstName = "first1", LastName = "last1" };
+            var expectedRecords = new List<Record> { record1 };
+
+            _validator.Stub(v => v.IsValid(args)).Return(validationResult);
+            _builder.Stub(b => b.Build(Arg<string[]>.Is.Anything, Arg<string>.Is.Anything)).Return(expectedRecords);
+
+            var result = _sut.Run(args);
+
+            _printer.AssertWasCalled(p => p.Print(result.DisplayMessage));
         }
     }
 }
