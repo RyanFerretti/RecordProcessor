@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace RecordProcessor.Api.Controllers
 {
@@ -13,19 +12,21 @@ namespace RecordProcessor.Api.Controllers
         }
 
         // GET: records/5
-        public string Get(int id)
+        public IHttpActionResult Get(string id)
         {
-            return "value";
+            var x = new Something { Message = id };
+            return Ok(x);
         }
 
         // POST: records
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Something data)
         {
-
+            data.Message = "saved " + data.Message;
+            return Ok(data);
         }
     }
 
-    class Something
+    public class Something
     {
         public string Message { get; set; }
 
