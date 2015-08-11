@@ -4,6 +4,7 @@ namespace RecordProcessor.Application.Sorters
 {
     public enum SortMethod
     {
+        None = 0,
         FemalesFirst = 1,
         Birthdate = 2,
         LastName = 3
@@ -22,7 +23,23 @@ namespace RecordProcessor.Application.Sorters
                 case SortMethod.LastName:
                     return new LastNameSortStrategy();
                 default:
-                    return new FemalesFirstSortStrategy();
+                    return new DoNotSortStrategy();
+            }
+        }
+
+        public ISortStrategy Get(string sortMethodName)
+        {
+            var sort = sortMethodName.Trim().ToLower();
+            switch (sort)
+            {
+                case "gender":
+                    return Get(SortMethod.FemalesFirst);
+                case "birthdate":
+                    return Get(SortMethod.Birthdate);
+                case "name":
+                    return Get(SortMethod.LastName);
+                default:
+                    return Get(SortMethod.None);
             }
         }
     }

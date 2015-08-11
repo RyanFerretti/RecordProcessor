@@ -18,6 +18,7 @@ namespace RecordProcessor.Application.IoC
             builder.RegisterType<SortMethodParser>().As<IParser<SortMethod>>();
             builder.RegisterType<RecordsBuilder>().As<IBuilder<Record>>();
             builder.RegisterType<SortStrategyFactory>().As<ISortStrategyFactory>();
+            builder.RegisterType<FileHelper>().As<IContentHelper>();
         }
     }
 }

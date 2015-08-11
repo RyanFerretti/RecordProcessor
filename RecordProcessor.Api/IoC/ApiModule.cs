@@ -1,15 +1,13 @@
 ﻿using Autofac;
-using RecordProcessor.Application;
 using RecordProcessor.Application.IoC;
 
-namespace RecordProcessor.Console.IoC
+namespace RecordProcessor.Api.IoC
 {
-    public class ConsoleModule : Module
+    public class ApiModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterModule(new ApplicationModule());
-            builder.RegisterType<ConsolePrinter>().As<IPrinter>();
         }
     }
 }

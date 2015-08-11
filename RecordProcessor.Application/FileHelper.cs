@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using RecordProcessor.Application;
 
-namespace RecordProcessor.Console
+namespace RecordProcessor.Application
 {
     public class FileHelper : IContentHelper
     {

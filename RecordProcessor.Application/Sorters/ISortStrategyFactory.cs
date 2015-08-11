@@ -3,5 +3,6 @@
     public interface ISortStrategyFactory
     {
         ISortStrategy Get(SortMethod sortMethod);
+        ISortStrategy Get(string sortMethodName);
     }
 }

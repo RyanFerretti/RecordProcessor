@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileHelper.cs" />
+    <Compile Include="Sorters\DoNotSortStrategy.cs" />
     <Compile Include="Parsers\SortMethodParser.cs" />
     <Compile Include="RecordsBuilder.cs" />
     <Compile Include="IBuilder.cs" />

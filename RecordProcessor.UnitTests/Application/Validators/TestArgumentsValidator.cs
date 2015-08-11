@@ -60,7 +60,7 @@ namespace RecordProcessor.UnitTests.Application.Validators
             var temp2Txt = "temp2.txt";
             var temp3Txt = "temp3.txt";
             var sortArg1 = "-s";
-            var sortArg2 = "0";
+            var sortArg2 = "-1";
 
             _fileHelper.Stub(f => f.Exists(Arg<string>.Is.Anything)).Return(true);
 

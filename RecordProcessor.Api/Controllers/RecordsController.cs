@@ -1,21 +1,32 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
+using RecordProcessor.Application.Domain;
+using RecordProcessor.Application.Sorters;
 
 namespace RecordProcessor.Api.Controllers
 {
     public class RecordsController : ApiController
     {
+        private readonly ISortStrategyFactory _sortStrategyFactory;
+        private readonly IEnumerable<Record> _records;
+
+        public RecordsController(ISortStrategyFactory sortStrategyFactory, IEnumerable<Record> records)
+        {
+            _sortStrategyFactory = sortStrategyFactory;
+            _records = records;
+        }
+
         // GET: records
         public IHttpActionResult Get()
         {
-            var x = new Something{Message = "hello"};
-            return Ok(x);
+            return Ok(_records);
         }
 
-        // GET: records/5
+        // GET: records/sort-strategy
         public IHttpActionResult Get(string id)
         {
-            var x = new Something { Message = id };
-            return Ok(x);
+            var sortedRecords = _sortStrategyFactory.Get(id).Execute(_records);
+            return Ok(sortedRecords);
         }
 
         // POST: records
