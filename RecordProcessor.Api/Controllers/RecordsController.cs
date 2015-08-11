@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using RecordProcessor.Application.Domain;
+using RecordProcessor.Application.Repositories;
 using RecordProcessor.Application.Sorters;
 
 namespace RecordProcessor.Api.Controllers
@@ -8,38 +8,34 @@ namespace RecordProcessor.Api.Controllers
     public class RecordsController : ApiController
     {
         private readonly ISortStrategyFactory _sortStrategyFactory;
-        private readonly IEnumerable<Record> _records;
+        private readonly IRecordRepository _recordRepository;
 
-        public RecordsController(ISortStrategyFactory sortStrategyFactory, IEnumerable<Record> records)
+        public RecordsController(ISortStrategyFactory sortStrategyFactory, IRecordRepository recordRepository)
         {
             _sortStrategyFactory = sortStrategyFactory;
-            _records = records;
+            _recordRepository = recordRepository;
         }
 
         // GET: records
         public IHttpActionResult Get()
         {
-            return Ok(_records);
+            var records = _recordRepository.GetAll();
+            return Ok(records);
         }
 
         // GET: records/sort-strategy
         public IHttpActionResult Get(string id)
         {
-            var sortedRecords = _sortStrategyFactory.Get(id).Execute(_records);
+            var records = _recordRepository.GetAll();
+            var sortedRecords = _sortStrategyFactory.Get(id).Execute(records);
             return Ok(sortedRecords);
         }
 
         // POST: records
-        public IHttpActionResult Post(Something data)
+        public IHttpActionResult Post(Record record)
         {
-            data.Message = "saved " + data.Message;
-            return Ok(data);
+            _recordRepository.Add(record);
+            return Ok();
         }
-    }
-
-    public class Something
-    {
-        public string Message { get; set; }
-
     }
 }

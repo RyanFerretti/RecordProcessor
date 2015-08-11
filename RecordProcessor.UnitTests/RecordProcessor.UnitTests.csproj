@@ -63,6 +63,7 @@
     <Compile Include="Api\Controllers\TestRecordsController.cs" />
     <Compile Include="Application\Domain\TestRecord.cs" />
     <Compile Include="Application\Parsers\TestSortMethodParser.cs" />
+    <Compile Include="Application\Repositories\TestInMemoryRecordRepository.cs" />
     <Compile Include="Application\Sorters\TestDoNotSortStrategy.cs" />
     <Compile Include="Application\Sorters\TestBirthDateSortStrategy.cs" />
     <Compile Include="Application\Sorters\TestLastNameSortStrategy.cs" />
