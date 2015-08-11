@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Record Files", "Record File
 		records_space.txt = records_space.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordProcessor.Api", "RecordProcessor.Api\RecordProcessor.Api.csproj", "{7294F337-A66A-49C5-813B-7F3415EC166B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{BDE3724A-771D-4100-A8E7-1BF93728B54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE3724A-771D-4100-A8E7-1BF93728B54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDE3724A-771D-4100-A8E7-1BF93728B54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7294F337-A66A-49C5-813B-7F3415EC166B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7294F337-A66A-49C5-813B-7F3415EC166B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7294F337-A66A-49C5-813B-7F3415EC166B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7294F337-A66A-49C5-813B-7F3415EC166B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
