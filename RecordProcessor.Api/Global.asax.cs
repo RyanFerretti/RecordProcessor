@@ -11,9 +11,9 @@ namespace RecordProcessor.Api
     {
         public static readonly string[] RecordPaths =
         {
-            "C:\\Users\\Ryan Ferretti\\Documents\\visual studio 2013\\Projects\\RecordProcessor\\records_comma.txt",
-            "C:\\Users\\Ryan Ferretti\\Documents\\visual studio 2013\\Projects\\RecordProcessor\\records_pipe.txt",
-            "C:\\Users\\Ryan Ferretti\\Documents\\visual studio 2013\\Projects\\RecordProcessor\\records_space.txt",
+            "C:\\RecordProcessor\\records_comma.txt",
+            "C:\\RecordProcessor\\records_pipe.txt",
+            "C:\\RecordProcessor\\records_space.txt",
         };
 
         protected void Application_Start()
