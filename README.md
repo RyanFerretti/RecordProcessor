@@ -8,6 +8,12 @@ A record consists of the following 5 fields: last name, first name, gender, date
   * LastName, FirstName, Gender, FavoriteColor, DateOfBirth
 * The space-delimited file looks like this: 
   * LastName FirstName Gender FavoriteColor DateOfBirth
+
+You can run the application via the command line by passing in 3 file paths to the files containing records along with a sort option 1 thru 3: 
+
+![Image of Args](https://raw.githubusercontent.com/RyanFerretti/RecordProcessor/master/console.PNG)
+
+
   
 **Assumptions**
 * All record data contained in the files contains valid data.  No fields are empty and dates are in the format M/D/YYYY.
