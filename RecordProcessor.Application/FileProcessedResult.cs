@@ -3,7 +3,7 @@ using RecordProcessor.Application.Domain;
 
 namespace RecordProcessor.Application
 {
-    public class FileProcessedResult
+    public class RecordsProcessedResult
     {
         public bool Success { get; set; }
         public string ErrorMessage { private get; set; }

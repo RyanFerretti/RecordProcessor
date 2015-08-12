@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using Autofac;
 using NUnit.Framework;
 using RecordProcessor.Application;
@@ -27,7 +26,6 @@ namespace RecordProcessor.AcceptanceTests.Application
             var result = _sut.Run(new string[] { });
             Assert.That(result.Success, Is.False);
             _mockPrinter.AssertWasCalled(p => p.Print(Arg<string>.Matches(s => s.Contains("args are required"))));
-
         }
 
         [Test]

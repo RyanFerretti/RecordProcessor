@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using RecordProcessor.Application;
 
 namespace RecordProcessor.UnitTests.Application
@@ -8,7 +6,7 @@ namespace RecordProcessor.UnitTests.Application
     [TestFixture]
     public class TestFileProcessedResult
     {
-        private FileProcessedResult _sut;
+        private RecordsProcessedResult _sut;
         private string _successMessage;
         private string _errorMessage;
 
@@ -17,7 +15,7 @@ namespace RecordProcessor.UnitTests.Application
         {
             _successMessage = "a success";
             _errorMessage = "a failure";
-            _sut = new FileProcessedResult{SuccessMessage = _successMessage, ErrorMessage = _errorMessage};
+            _sut = new RecordsProcessedResult{SuccessMessage = _successMessage, ErrorMessage = _errorMessage};
         }
 
         [Test]

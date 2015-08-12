@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RecordProcessor.Application.Sorters
+﻿namespace RecordProcessor.Application.Sorters
 {
     public enum SortMethod
     {

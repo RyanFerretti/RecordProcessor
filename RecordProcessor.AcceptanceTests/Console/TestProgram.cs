@@ -14,7 +14,7 @@ namespace RecordProcessor.AcceptanceTests.Console
         }
 
         [Test]
-        public static void ShouldInitializeContainerAndSmoke()
+        public static void ShouldInitializeContainerAndFailValidation()
         {
 
             var path = PathHelperForTests.CommaDelimitedFilePath;

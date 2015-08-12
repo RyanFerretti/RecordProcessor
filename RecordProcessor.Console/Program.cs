@@ -34,9 +34,9 @@ namespace RecordProcessor.Console
             return builder.Build();
         }
 
-        private static FileProcessedResult InitializeAndRunApplication(string[] args, IContainer builder)
+        private static RecordsProcessedResult InitializeAndRunApplication(string[] args, IContainer builder)
         {
-            FileProcessedResult result;
+            RecordsProcessedResult result;
             using (var scope = builder.BeginLifetimeScope())
             {
                 var processor = scope.Resolve<IRecordProcessor>();

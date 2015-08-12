@@ -11,7 +11,7 @@ namespace RecordProcessor.Application.IoC
         protected override void Load(ContainerBuilder builder)
         {
             var delimiters = new[] {"|", ",", " "};
-            builder.RegisterType<RecordProcessorFromFile>().As<IRecordProcessor>();
+            builder.RegisterType<RecordProcessor>().As<IRecordProcessor>();
             builder.RegisterType<ArgumentsValidator>().As<IValidator<string[]>>();
             builder.RegisterType<RecordParser>().As<IParser<Record>>();
             builder.Register(c => new RecordParser(delimiters)).As<IParser<Record>>();

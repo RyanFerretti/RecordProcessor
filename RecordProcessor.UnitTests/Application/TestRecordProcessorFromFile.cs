@@ -21,7 +21,7 @@ namespace RecordProcessor.UnitTests.Application
             _builder = MockRepository.GenerateMock<IBuilder<Record>>();
             _printer = MockRepository.GenerateMock<IPrinter>();
             _validator = MockRepository.GenerateMock<IValidator<string[]>>();
-            _sut = new RecordProcessorFromFile(_builder,_validator,_printer);
+            _sut = new RecordProcessor.Application.RecordProcessor(_builder,_validator,_printer);
         }
 
         [Test]
