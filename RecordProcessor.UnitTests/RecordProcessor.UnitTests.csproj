@@ -72,7 +72,7 @@
     <Compile Include="Application\TestRecordsBuilder.cs" />
     <Compile Include="Application\Parsers\TestRecordParser.cs" />
     <Compile Include="Application\TestFileProcessedResult.cs" />
-    <Compile Include="Application\TestRecordProcessorFromFile.cs" />
+    <Compile Include="Application\TestRecordProcessor.cs" />
     <Compile Include="Application\Validators\TestArgumentsValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

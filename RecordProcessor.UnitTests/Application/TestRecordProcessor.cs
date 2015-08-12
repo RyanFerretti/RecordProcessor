@@ -8,7 +8,7 @@ using Rhino.Mocks;
 namespace RecordProcessor.UnitTests.Application
 {
     [TestFixture]
-    public class TestRecordProcessorFromFile
+    public class TestRecordProcessor
     {
         private IRecordProcessor _sut;
         private IPrinter _printer;
